@@ -1,0 +1,7 @@
+$kind: http-request
+method: GET
+url: '{{baseUrl}}/api/users/profile/:mobile'
+order: 3000
+pathVariables:
+  - key: mobile
+    value: '9876543210'

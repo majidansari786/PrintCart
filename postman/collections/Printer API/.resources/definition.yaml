@@ -1,0 +1,10 @@
+$kind: collection
+name: Printer API
+description: |-
+  API collection for the Printer project.
+  Covers user registration, login, and profile retrieval.
+  
+  All endpoints are prefixed with /api/users.
+variables:
+  - key: baseUrl
+    value: 'http://localhost:5000'
