@@ -9,12 +9,38 @@ const orderSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    color: {
+        type: String,
+        required: true
+    },
+    pages: {
+        type: Number,
+        required: true
+    },
+    copies: {
+        type: Number,
+        required: true
+    },
+    range: {
+        type: String,
+        required: true
+    },
     print_status: {
         type: String,
         required: true
+    },
+    payment_order_id: {
+        type: String,
+        required: true,
+        unique: true
+    },
+    payment_id: {
+        type: String,
+        required: true,
+        unique: true
     }
 })
 
 const orderModel = mongoose.model('Order', orderSchema)
 
-module.exports=orderModel
+export default orderModel;

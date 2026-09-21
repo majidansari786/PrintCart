@@ -1,18 +1,26 @@
+import 'dotenv/config';
 import express from 'express';
-import dotenv from 'dotenv';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import userRouter from './controller/userController.js';
+import orderRouter from './controller/orderController.js';
 import connectDB from './config/db.js';
 
-dotenv.config();
 await connectDB();
 
 const app = express();
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 app.use(express.json());
 app.use('/api/users', userRouter);
+app.use('/api/orders', orderRouter);
+
+app.get('/api/config/razorpay', (req, res) => {
+  res.json({ keyId: process.env.RAZORPAY_KEY_ID });
+});
 
 app.get('/', (req, res) => {
-  res.send('API is running...');
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 const PORT = process.env.PORT || 5000;
